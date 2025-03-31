@@ -1,0 +1,60 @@
+.wrapper {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    pointer-events: none;
+    z-index: 1;
+  }
+  
+  .heart {
+    position: absolute;
+    width: 12px; /* Updated to 12px */
+    height: 12px;
+    background-color: var(--heart-color, #ff4d6d);
+    transform: rotate(var(--heart-rotation, 0deg)) scale(var(--heart-scale, 1));
+    animation: moveclouds var(--animation-duration, 10s) linear infinite, 
+               sideWays var(--sideways-duration, 4s) ease-in-out infinite alternate;
+    filter: drop-shadow(1px 1px 3px rgba(0, 0, 0, 0.15)); /* Soft shadow for depth */
+  }
+  
+  /* Creating the heart shape */
+  .heart::before,
+  .heart::after {
+    content: "";
+    position: absolute;
+    width: 12px;
+    height: 12px;
+    background: inherit;
+    border-radius: 50%;
+  }
+  
+  .heart::before {
+    top: -6px;
+    left: 0;
+  }
+  
+  .heart::after {
+    top: 0;
+    left: 6px;
+  }
+  
+  /* Floating Heart Variations */
+  .x1 { left: 5%;  --animation-duration: 12s; --sideways-duration: 3s; --heart-rotation: -10deg; --heart-scale: 1;    --heart-color: #ff4d6d; }
+  .x2 { left: 20%; --animation-duration: 18s; --sideways-duration: 5s; --heart-rotation: 15deg; --heart-scale: 0.9;  --heart-color: #e63946; }
+  .x3 { left: 40%; --animation-duration: 15s; --sideways-duration: 4s; --heart-rotation: 0deg;  --heart-scale: 1.1;  --heart-color: #d00000; }
+  .x4 { left: 60%; --animation-duration: 14s; --sideways-duration: 2s; --heart-rotation: 30deg; --heart-scale: 1.2;  --heart-color: #ff0a54; }
+  .x5 { left: 75%; --animation-duration: 9s;  --sideways-duration: 3s; --heart-rotation: -25deg; --heart-scale: 0.8;  --heart-color: #ff6b81; opacity: 0.7; }
+  .x6 { left: 90%; --animation-duration: 11s; --sideways-duration: 6s; --heart-rotation: 45deg; --heart-scale: 1.1;  --heart-color: #d62828; }
+  
+  /* Keyframe Animations */
+  @keyframes moveclouds {
+    0% { top: 100%; }
+    100% { top: -100%; }
+  }
+  
+  @keyframes sideWays {
+    0% { transform: translateX(0px); }
+    100% { transform: translateX(30px); }
+  }
+  
